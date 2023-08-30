@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="CuentaRegresiva()">
+    <h2>
+        Juegos de preguntas sobre cultura general 
+        <span id="comenzarCuentaRegresiva""></span>
+    </h2>
+
+    <p>1. Cual es la capital de colombia?</p>
+    <input type="text" id="respuesta1">
+    <p>2. Cuantos anios duro la Segunda Guerra Mundial?</p>
+    <input type="text" id="respuesta2">
+    <p>3. Que tipo de animal es la Ballena?</p>
+    <input type="text" id="respuesta3">
+    <p>4. Cual es el oceano mas grande del mundo?</p>
+    <input type="text" id="respuesta4">
+    <p>5. Quien es el rey del pop?</p>
+    <input type="text" id="respuesta5">
+    <br><br>
+    <button onclick="finalizado()">Termine</button>
+    <br><br>
+    <button onclick="volverAIntentar()">Volver a intentar</button>
+
+    <audio id="SonidoGameOver">
+        <source src="Audios/Sonido-intro.mp3" type="audio/mpeg">
+        Sonido no habilitado
+    </audio>
+
+    <script>
+
+        let timepoTerminado;
+        let intervaloTiempo;
+
+        function CuentaRegresiva(){
+            timepoTerminado = setTimeout(tiempoCumplido, 30000);
+            intervaloTiempo = setInterval(titac, 1000);
+
+            document.getElementById("comenzarCuentaRegresiva").textContent = 30;
+        }
+
+        function tictac(){
+            let tiempo = document.getElementById("comenzarCuentaRegresiva").textContent;
+
+            document.getElementById('comenzarCuentaRegresiva').textContent = tiempo - 1;
+        }
+
+        function tiempoCumplido(){
+            clearInterval(intervaloTiempo);
+
+            document.getElementById('comenzarCuentaRegresiva').textContent = 0;
+            document.getElementById('SonidoGameOver').play();
+            alert('GAME OVER SE ACABO EL TIMEPO INTENTALO NUEVAMENTE')
+        }
+
+        function finalizado(){
+            clearTimeout(timepoTerminado);
+            clearInterval(intervaloTiempo);
+
+            let fecha = new Date();
+            let respuesta1 = document.getElementById('respuesta1').value;
+            let respuesta2 = document.getElementById('respuesta2').value;
+            let respuesta3 = document.getElementById('respuesta3').value;
+            let respuesta4 = document.getElementById('respuesta4').value;
+            let respuesta5 = document.getElementById('respuesta5').value;
+
+            let mensaje = fecha.toLocaleDateString('es-ES') + '\n' +
+                            '1. ' + respuesta1 + '\n' +
+                            '2. ' + respuesta2 + '\n' +
+                            '3. ' + respuesta3 + '\n' +
+                            '4. ' + respuesta4 + '\n' +
+                            '5. ' + respuesta5;
+
+            alert(mensaje)
+        }
+
+        function volverAIntentar(){
+            location.reload();
+        }
+    </script>
+</body>
+</html>
