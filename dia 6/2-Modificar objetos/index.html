@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Objeto</title>
+</head>
+
+<body>
+    <script>
+        let perro = {
+            nombre: 'Davinchi',
+            raza: 'shih tzu',
+            edad: 1,
+            ladrar() {
+                console.log('woof');
+            },
+            saludar() {
+                console.log('Hola me llamo: ' + this.nombre);
+            }
+        };
+
+        let perro2 = {
+            nombre: 'Coffe',
+            raza: 'Mixto',
+            edad: 5,
+            ladrar() {
+                console.log('woof');
+            },
+            saludar() {
+                console.log('Hola, me llamo: ' + this.nombre);
+            }
+        };
+    </script>
+</body>
+
+</html>

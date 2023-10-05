@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ParametrosConstructores</title>
+</head>
+
+<body>
+    <script>
+        function Perro (raza, edad) {
+            this.patas = 4
+            this.raza = raza;
+            this.edad = edad;
+            this.ladrar = function (){
+                console.log("woof")
+            }
+        }
+
+        let davinchi = new Perro('Shih tzu', 1);
+        let coofe = new Perro('mixto', 5);
+        let zeus = new Perro('shih tzu', 2);
+
+        function empleado(nombre, apellido, edad, cargo) {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.edad = edad;
+            this.cargo = cargo;
+            this.presentarse = function(){
+                console.log(`Mi nombre es : ${this.nombre} ${this.apellido}, tengo ${this.edad} y tengo un cargo como ${this.cargo}`)
+            }
+        }
+
+        let empleado1 = new empleado('Luis', 'Lopez', 26, 'asesor');
+        let empleado2 = new empleado('Carlos', 'Diaz', 34, 'Coordinador');
+        let empleado3 = new empleado('Kevin', 'Muñoz', 25, 'CEO');
+    </script>
+</body>
+
+</html>
